@@ -32,7 +32,9 @@ df = df.with_columns(
     (pl.col("bmi").replace({777:None, 999:None}) / 100).alias("bmi"), 
     pl.col("sex").replace({1:0, 2:1}), 
     pl.col("hypertension").replace({1:0, 2:1, 9:None}), 
-    pl.col("total_activity").replace({1:0, 2:1, 9:None}), 
+    pl.col("activity").replace({2:0, 9:None}), 
 )
 
+# Drop rows with missing diabetes information 
+df = df.drop_nulls("diabetes")
 df.write_parquet("cleaned_data.parquet")
