@@ -24,7 +24,7 @@ df = df.select(
     "_BMI5": "bmi",
     "_SEX": "sex",
     "_RFHYPE6": "hypertension",
-    "_TOTINDA": "total_activity",})
+    "_TOTINDA": "activity",})
 
 # Recode
 df = df.with_columns(
